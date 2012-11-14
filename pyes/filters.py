@@ -30,7 +30,7 @@ class Filter(EqualityComparableUsingAttributeDictionary):
         if self._cache_key:
             data["_cache_key"]=self._cache_key
         if self._name:
-            data["_name"]=self._name
+            data[self._internal_name]["_name"]=self._name
         return data
 
     @property
