@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 from .utils import EqualityComparableUsingAttributeDictionary
-from .filters import Filter, TermFilter, TermsFilter, ANDFilter, NotFilter
+from .filters import Filter, TermFilter, TermsFilter, ANDFilter, NotFilter, RangeFilter
 
 
 #--- Facet
@@ -387,6 +387,8 @@ class ANDFacetFilter(ANDFilter, FacetFilter):
 class NotFacetFilter(NotFilter, FacetFilter):
     pass
 
+class RangeFacetFilter(RangeFilter, FacetFilter):
+    pass
 
 class FacetQueryWrap(EqualityComparableUsingAttributeDictionary):
     def __init__(self, wrap_object, **kwargs):
