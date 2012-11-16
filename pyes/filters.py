@@ -30,7 +30,7 @@ class Filter(EqualityComparableUsingAttributeDictionary):
         if self._cache_key:
             data["_cache_key"]=self._cache_key
         if self._name:
-            data["_name"]=self._name
+            data[self._internal_name]["_name"]=self._name
         return data
 
     @property
@@ -50,7 +50,7 @@ class FilterList(Filter):
     def serialize(self):
         if not self.filters:
             raise RuntimeError("A least a filter must be declared")
-        return self._add_parameters({self._internal_name: [filter.serialize() for filter in self.filters]})
+        return self._add_parameters({self._internal_name: {"filters":[filter.serialize() for filter in self.filters]}})
 
     def __iter__(self):
         return iter(self.filters)
